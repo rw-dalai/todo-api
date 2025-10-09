@@ -1,11 +1,10 @@
 package at.spengergasse.todo.model2;
 
-import at.spengergasse.todo.validation.Guard;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.ToString;
 
-import static at.spengergasse.todo.validation.Guard.maxLength;
+import static at.spengergasse.todo.validation.Guard.textLength;
 
 
 // Invariants
@@ -22,8 +21,8 @@ import static at.spengergasse.todo.validation.Guard.maxLength;
 @Getter
 @ToString
 
-public class Todo {
-
+public class Todo
+{
     public static final String MAX_LEN_MSG = "title should be between 1..100 chars";
 
     @Id
@@ -33,8 +32,10 @@ public class Todo {
 
     // JPA
     // not-null, not-blank, max 100 chars
-    @Column(name = "title", nullable = false, length = 100)
-    private String title;
+    // @Column(name = "title", nullable = false, length = 100)
+
+    @Embedded
+    private Title title;
 
 
     // --- Ctor ---
@@ -43,25 +44,25 @@ public class Todo {
     protected Todo() {}
 
     // Business Ctor
-    public Todo(String title) {
-        title = maxLength(title, 100, MAX_LEN_MSG);
+    public Todo(Title title) {
+        this.title = title;
 
     }
 
     // --- Business Methods ---
 
-    public void renameTitle(String title)
+    public void renameTitle(Title title)
     {
-        title = maxLength(title, 100, MAX_LEN_MSG);
+        this.title = title;
 
-        // 1. guard
-        if (title == null)
-            throw new IllegalArgumentException("title should be not null");
-
-        // 2. guard
-        var trimmedTitle = title.trim();
-        if (trimmedTitle.isEmpty() || title.length() > 100)
-            throw new IllegalArgumentException("title should be between 1..100 chars");
+//        // 1. guard
+//        if (title == null)
+//            throw new IllegalArgumentException("title should be not null");
+//
+//        // 2. guard
+//        var trimmedTitle = title.trim();
+//        if (trimmedTitle.isEmpty() || title.length() > 100)
+//            throw new IllegalArgumentException("title should be between 1..100 chars");
     }
 }
 

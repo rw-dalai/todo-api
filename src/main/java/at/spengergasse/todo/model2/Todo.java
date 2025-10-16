@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.ToString;
 
-import static at.spengergasse.todo.validation.Guard.textLength;
-
 
 // Invariants
 // Statements, which are always true

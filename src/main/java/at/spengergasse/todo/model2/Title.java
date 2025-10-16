@@ -3,7 +3,10 @@ package at.spengergasse.todo.model2;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 
-import static at.spengergasse.todo.validation.Guard.textLength;
+import static at.spengergasse.todo.validation.Guard.hasTextMax;
+
+
+// record
 
 @Embeddable
 public class Title {
@@ -18,6 +21,6 @@ public class Title {
     protected Title() {}
 
     public Title(String value) {
-        this.title = textLength(title, MAX_LEN, MAX_LEN_MSG);
+        this.title = hasTextMax(title, MAX_LEN, MAX_LEN_MSG);
     }
 }

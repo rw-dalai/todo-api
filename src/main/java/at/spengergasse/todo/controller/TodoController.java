@@ -71,15 +71,13 @@ public class TodoController {
 
     }
 
-
 //    @GetMapping
 //    public ResponseEntity<List<Todo>> getTodos() {
-//
 //        return ResponseEntity.ok(todoRepository.findAll());
 //    }
 
 
-    @GetMapping("/api/todos/{id}")
+    @GetMapping("/{id}")
     public void getOneTodo() {
 
     }

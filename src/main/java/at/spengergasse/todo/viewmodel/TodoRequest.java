@@ -1,15 +1,15 @@
 package at.spengergasse.todo.viewmodel;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 
 // DTO
 // Data Transfer Object
 
-// immutable (nicht veränderbar)
+// Immutable (nicht veränderbar, keine setter)
 // getters, hashCode, equals, toString,
 
 public record TodoRequest(
+        // Fail Fast in the API Boundary
         @NotBlank(message = "title should not be blank")
         String title
 ) { }

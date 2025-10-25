@@ -1,5 +1,6 @@
-package at.spengergasse.todo.model;
+package at.spengergasse.todo.model.modelBean;
 
+import at.spengergasse.todo.model.BaseEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.Getter;
